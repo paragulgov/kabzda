@@ -19,23 +19,37 @@ function Rating() {
     )
 }
 
+function AccordionTitle() {
+    return <h3>Menu</h3>
+}
+
+function AccordionBody() {
+    return (
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    )
+}
+
 function Accordion() {
     return (
         <div>
-            <h3>Menu</h3>
-            <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-            </ul>
+            <AccordionTitle />
+            <AccordionBody />
         </div>
     )
+}
+
+function AppTitle() {
+    return <>This is APP component</>
 }
 
 function App() {
     return (
         <div>
-            This is APP component
+            <AppTitle />
             <Rating />
             <Accordion />
         </div>
