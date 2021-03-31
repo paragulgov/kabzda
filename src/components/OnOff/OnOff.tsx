@@ -1,11 +1,11 @@
-import React, {useState} from 'react'
+import React from 'react'
 
-type PropsType = {
+export type OnOffPropsType = {
     on: boolean
     onChange: (on: boolean) => void
 }
 
-function OnOff(props: PropsType) {
+export function OnOff(props: OnOffPropsType) {
 
     const OnOffWrapperStyle = {
         margin: '20px 0',
@@ -40,11 +40,15 @@ function OnOff(props: PropsType) {
 
     return (
         <div style={OnOffWrapperStyle}>
-            <div style={onStyle} onClick={() => { props.onChange(true) }}>On</div>
-            <div style={offStyle} onClick={() => { props.onChange(false) }}>Off</div>
+            <div style={onStyle} onClick={() => {
+                props.onChange(true)
+            }}>On
+            </div>
+            <div style={offStyle} onClick={() => {
+                props.onChange(false)
+            }}>Off
+            </div>
             <div style={indicatorStyle} />
         </div>
     )
 }
-
-export default OnOff
