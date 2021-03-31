@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import {Story, Meta} from '@storybook/react'
-import {Accordion, AccordionPropsType} from './Accordion'
+import {Meta} from '@storybook/react'
+import {Accordion} from './Accordion'
 import {action} from '@storybook/addon-actions'
 
 export default {

@@ -1,11 +1,12 @@
 import React, {useState} from 'react'
 
-type PropsType = {
+export type UncontrolledOnOffPropsType = {
     onChange: (on: boolean) => void
+    defaultOn?: boolean
 }
 
-function UncontrolledOnOff(props: PropsType) {
-    const [on, setOn] = useState(false)
+export function UncontrolledOnOff(props: UncontrolledOnOffPropsType) {
+    const [on, setOn] = useState(props.defaultOn ? props.defaultOn : false)
 
     const OnOffWrapperStyle = {
         margin: '20px 0',
@@ -56,5 +57,3 @@ function UncontrolledOnOff(props: PropsType) {
         </div>
     )
 }
-
-export default UncontrolledOnOff
