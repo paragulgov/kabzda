@@ -1,39 +1,65 @@
 import React, {useState} from 'react'
-import {Meta} from '@storybook/react'
-import {Accordion} from './Accordion'
+import {Meta, Story} from '@storybook/react'
+import {Accordion, AccordionPropsType} from './Accordion'
 import {action} from '@storybook/addon-actions'
 
 export default {
     title: 'Accordion',
-    component: Accordion
+    component: Accordion,
+    argTypes: {
+        color: {
+            control: 'color',
+            table: {
+                category: 'Colors'
+            }
+        },
+        onChange: {
+            table: {
+                category: 'Events'
+            }
+        },
+        titleValue: {
+            table: {
+                category: 'Main'
+            }
+        },
+        collapsed: {
+            table: {
+                category: 'Main'
+            }
+        },
+    }
 } as Meta
 
 const callback = action('accordion mode change event fired')
 
-export const MenuCollapsedMode = () => {
-    return <Accordion onChange={callback} titleValue="Menu" collapsed={true}/>
+const Template: Story<AccordionPropsType> = (args) => <Accordion {...args} />
+const callbacksProps = {
+    onChange: callback,
+}
+export const MenuCollapsedMode = Template.bind({})
+MenuCollapsedMode.args = {
+    ...callbacksProps,
+    titleValue: 'Menu',
+    collapsed: true
 }
 
-export const UserUncollapsedMode = () => {
-    return <Accordion onChange={callback} titleValue="Users" collapsed={false}/>
+export const UserUncollapsedMode = Template.bind({})
+UserUncollapsedMode.args = {
+    ...callbacksProps,
+    titleValue: 'Users',
+    collapsed: false
 }
 
-export const ModeChanging = () => {
+export const ModeChanging: Story<AccordionPropsType> = (args) => {
     const [value, setValue] = useState<boolean>(true)
 
-    return <Accordion onChange={() => setValue(!value)} titleValue="Users" collapsed={value}/>
+    return <Accordion
+        {...args}
+        onChange={() => setValue(!value)}
+        collapsed={value}
+    />
 }
-
-// const Template: Story<OnOffPropsType> = (args) => <OnOff {...args} />
-
-// export const OnMode = Template.bind({})
-// OnMode.args = {
-//     on: true,
-//     onChange: x => x
-// }
-//
-// export const OffMode = Template.bind({})
-// OffMode.args = {
-//     on: false,
-//     onChange: (x) => x,
-// }
+ModeChanging.args = {
+    titleValue: "Users"
+}
