@@ -21,17 +21,3 @@ export const OffMode = () => {
 export const DefaultInputValue = () => {
     return <input type="text" defaultValue="{}" />
 }
-
-// const Template: Story<OnOffPropsType> = (args) => <OnOff {...args} />
-
-// export const OnMode = Template.bind({})
-// OnMode.args = {
-//     on: true,
-//     onChange: x => x
-// }
-//
-// export const OffMode = Template.bind({})
-// OffMode.args = {
-//     on: false,
-//     onChange: (x) => x,
-// }
